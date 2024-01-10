@@ -70,7 +70,7 @@ Route::group(['prefix'=>'/admin','middleware'=>'admin'],function(){
 
   //sub-sub-category route start
      Route::get('/sub-sub-category',[CategoryController::class,'subSubIndex'])->name('sub-sub-category');
-     Route::get('/subcategory/ajax/{cat_id}',[CategoryController::class,'getSubCat']);
+     Route::get('/subcategory/ajax/{cat_id}',[CategoryController::class,'getSubCat']); //for subcategory automaticaly in product page and subsubcategory page a
      Route::post('/subsub-category',[CategoryController::class,'subsubCategoryStore'])->name('subsub.store');
      Route::get('/sub-subcategory/edit/{subsubcat_id}',[CategoryController::class,'subSubCategoryEdit'])->name('subsub.edit');
      Route::post('/sub-subcategory/update/{subsubcat_id}',[CategoryController::class,'subSubCategoryUpdate'])->name('subsub.update');
@@ -81,7 +81,9 @@ Route::group(['prefix'=>'/admin','middleware'=>'admin'],function(){
 
   Route::get('/add-products',[ProductController::class,'addProduct'])->name('add.products');
   Route::post('/add-products',[ProductController::class,'storeProduct'])->name('store.products');
-  Route::get('/subsubcategory/ajax/{subcat_id}',[ProductController::class,'getSubSubCat']);
+  Route::get('/subsubcategory/ajax/{subcat_id}',[ProductController::class,'getSubSubCat']);//for subsub category automaticaly
+  Route::post('/add-products',[ProductController::class,'storeProduct'])->name('store.products');
+
     
 });
 

@@ -17,7 +17,7 @@
         <div class="sl-pagebody">
             <div class="card pd-20 pd-sm-40">
               <h6 class="card-body-title">Add product</h6>
-              <form action="" method="POST" enctype="multipart/form-data">
+              <form action="{{ route('store.products') }}" method="POST" enctype="multipart/form-data">
                 @csrf
             <div class="row row-sm">
         
