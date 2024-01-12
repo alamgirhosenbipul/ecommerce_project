@@ -7,7 +7,7 @@
      <!-- ########## START: MAIN PANEL ########## -->
      <div class="sl-mainpanel">
         <nav class="breadcrumb sl-breadcrumb">
-          <a class="breadcrumb-item" href="index.html">SHopMama</a>
+          <a class="breadcrumb-item" href="index.html">Arzena Fashion</a>
           <span class="breadcrumb-item active">Products</span>
         </nav>
 

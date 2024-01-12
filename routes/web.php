@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\ProductController;
+use App\Http\Controllers\Admin\SliderController;
 use App\Http\Controllers\User\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -83,6 +84,38 @@ Route::group(['prefix'=>'/admin','middleware'=>'admin'],function(){
   Route::post('/add-products',[ProductController::class,'storeProduct'])->name('store.products');
   Route::get('/subsubcategory/ajax/{subcat_id}',[ProductController::class,'getSubSubCat']);//for subsub category automaticaly
   Route::post('/add-products',[ProductController::class,'storeProduct'])->name('store.products');
+  Route::get('/manage-products',[ProductController::class,'index'])->name('manage.products');
+  Route::get('/product-edit/{product_id}',[ProductController::class,'productEdit'])->name('product.edit');
+  Route::post('/product-update/{product_id}',[ProductController::class,'productUpdate'])->name('update.products');
+  Route::get('/product/delete/{id}',[ProductController::class,'delete']);
+
+      //update product image
+
+      Route::post('/product/update-image',[ProductController::class,'updateProductImage'])->name('update.productImage');
+ 
+    //update product thumbnail
+    Route::post('/product/update-thumbnail',[ProductController::class,'updateProductThumbnail'])->name('update.productThumbnail');
+
+     //multi image delete
+     Route::get('/product/multiImage-delete/{multiImageId}',[ProductController::class,'multiImageDelete'])->name('multiImage.Delete');
+     //product inactive and active route
+     Route::get('/product/inactive/{id}',[ProductController::class,'inactive']);
+     Route::get('/product/active/{id}',[ProductController::class,'active']);
+
+    //product inactive and active route
+     Route::get('/product/inactive/{id}',[ProductController::class,'inactive']);
+     Route::get('/product/active/{id}',[ProductController::class,'active']);
+
+      //slider route
+
+      Route::get('/slider',[SliderController::class,'index'])->name('slider');
+      Route::post('slider/store',[SliderController::class,'store'])->name('slider.store');
+      Route::get('/slider/edit/{id}',[SliderController::class,'edit']);
+      Route::post('slider/edit/{id}',[SliderController::class,'update'])->name('slider.update');
+      Route::get('/slider/delete/{id}',[SliderController::class,'delete']);
+      Route::get('/slider/inactive/{id}',[SliderController::class,'inactive']);
+      Route::get('/slider/active/{id}',[SliderController::class,'active']);
+
 
     
 });
