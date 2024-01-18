@@ -4,6 +4,9 @@ use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\SliderController;
+use App\Http\Controllers\Frontend\CartController;
+use App\Http\Controllers\Frontend\IndexController;
+use App\Http\Controllers\Frontend\LanguageController;
 use App\Http\Controllers\User\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -17,10 +20,10 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+//main website view routes
+Route::get('/',[IndexController::class,'index']);
 
-Route::get('/', function () {
-    return view('frontend.home');
-});
+
 
 Auth::routes();
 
@@ -121,4 +124,40 @@ Route::group(['prefix'=>'/admin','middleware'=>'admin'],function(){
 });
 
 //admin route end
+
+     //language roue
+     Route::get('/language/bangla',[LanguageController::class,'bangla'])->name('bangla.language');
+     Route::get('/language/english',[LanguageController::class,'english'])->name('english.language');
+
+
+    //product details route
+    Route::get('/single/product/{id}/{slug}',[IndexController::class,'singleProduct'])->name('single.product');
+
+    
+     //product tag route
+
+     Route::get('/product/tag/{tag}',[IndexController::class,'tagWiseProduct']);
+
+    //subcat wise prodouct show
+
+    Route::get('/subcategory/product/{id}/{slug}',[IndexController::class,'subcategorywiseproductshow']);
+
+     //subsubcat wise product show
+     
+    Route::get('/subsubcategory/product/{id}/{slug}',[IndexController::class,'subsubcatwiseproductshow']);
+
+      //product view modal with ajax
+    Route::get('/product/view/modal/{id}',[IndexController::class,'productViewAjax']);
+
+    //add to cart
+
+    Route::post('/cart/data/store/{id}',[CartController::class,'addToCart']);
+
+    //mini cart
+
+    Route::get('/product/mini/cart',[CartController::class,'miniCart']);
+
+      // miniCart product remove
+    Route::get('minicart/product-remove/{rowId}',[CartController::class,'miniCartRemove']);
+
 

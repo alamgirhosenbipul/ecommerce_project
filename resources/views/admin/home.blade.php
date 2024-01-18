@@ -1,4 +1,5 @@
 @extends('admin.layouts.app');
+@section('title') admin-home @endsection
 @section('adminContent')
     
  <div class="sl-mainpanel">
